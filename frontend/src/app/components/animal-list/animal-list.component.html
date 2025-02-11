@@ -1,0 +1,88 @@
+<div class="container mt-3">
+  <p>
+    Find the animal by selecting the option below
+    <strong class="text-danger fs-6"
+      >(पैसे का लेंन देंन ऑनलाइन (Online) ना करे! आमने सामने ही पैसे का लेनदेन
+      करे! कई लोग ट्रांसपोर्ट से पसु भेजने का बोलते हे पर उनपर विस्वास न
+      करे!)</strong
+    >
+  </p>
+  <div class="row">
+    <div class="col-3"></div>
+    <img src="../../../assets/post-office.jpg" style="height: 15vh; width: 8vw;" class="col-1" alt="">
+    <div class="col-4">
+        <h3 class="fs-6 pt-2" style="color: gray;">Enter Your Postal Code </h3>
+        <!-- <input type="number" style="border: 1px solid gray;"/> -->
+         <div>
+            <input type="text" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+            <input type="text" class="pl-2" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+            <input type="text" class="pl-2" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+            <input type="text" class="pl-2" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+            <input type="text" class="pl-2" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+            <input type="text" class="pl-2" style="margin-left: 4px; height: 6vh; width: 3vw; border: 1px solid rgba(0, 0, 0, 0.212);">
+         </div>
+    </div>
+  </div>
+
+  <div class="row mt-3" style="color: gray;">
+      <div class="col-4" >
+          <label for="child">Type of Animals</label>
+          <select class="form-select mt-2" style="color: gray;" aria-label="Default select example" (change)="onTypeChange($event)">
+              <option selected>Type of Animals</option>
+              <option value="Cow">Cow</option>
+              <option value="Buffalo">Buffalo</option>
+              <option value="Goat">Goat</option>
+              <option value="Horse">Horse</option>
+              <option value="Camel">Camel</option>
+            </select>
+      </div>
+    <div class="col-4">
+        <label for="child">Select Breed</label>
+        <select class="form-select mt-2" style="color: gray;" aria-label="Default select example">
+            <option disabled selected>Select Breed</option>
+            
+          </select>
+    </div>
+    <div class="col-4">
+        <label for="child">Search Location</label><br>
+        <input type="text" class="mt-2" style="height: 6vh; width: 20vw; border: 1px solid rgba(0, 0, 0, 0.158);" placeholder="Enter location">
+    </div>
+    
+  </div>
+</div>
+
+<div class="col-12 container mb-5">
+  <div class="row mt-3">
+    <div class="col-md-3 pt-1" *ngFor="let animal of animalsList">
+      <div class="box-shadow">
+        <div class="card mt-4 p-4">
+          <img
+            src={{baseUrl}}{{animal.animalImg}}
+            class="img-fluid"
+            style="height: 150px"
+            class="card-img-top"
+            alt="product Img"
+          />
+          <div class="card-body">
+            <div class="row" style="color: rgba(255, 68, 0, 0.705)">
+              <h5 class="card-title col-5">{{animal.type}}</h5>
+              <p class="card-text col-7">
+                <span class="fw-semibold me-2">Rs. {{animal.price}}/-</span>
+              </p>
+            </div>
+            <p class="my-1">Milk -- {{animal.milk}} litres</p>
+            <p class="my-1">Age -- {{animal.age}}</p>
+            <p class="my-1">Child -- {{animal.child}}</p>
+            <p style="color: orangered" class="my-2">Information</p>
+            <p class="m-0">{{animal.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="animalsList.length === 0" class="text-center mt-5">
+      <p style="color: gray; font-size: 1.5rem;">
+        No animals found for the selected type.
+      </p>
+    </div>
+  </div>
+</div>

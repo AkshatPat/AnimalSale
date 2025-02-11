@@ -1,0 +1,97 @@
+<div class="container-fluid pt-5 d-flex" style="justify-content: center; align-items: center;">
+    <div class="main col-md-7 mb-5 p-5" style="color: #FF9933;">
+      <div class="head mb-3 display-6">ANIMAL DETAILS</div>
+      <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+        
+        <select class="form-select" formControlName="type">
+          <option value="" disabled selected>Type of Animals</option>
+          <option value="Cow">Cow</option>
+          <option value="Buffalo">Buffalo</option>
+          <option value="Goat">Goat</option>
+          <option value="Horse">Horse</option>
+          <option value="Camel">Camel</option>
+        </select>
+        <small *ngIf="regForm.get('type')?.touched && regForm.get('type')?.invalid" class="text-danger">
+          Please select a type of animal.
+        </small>
+  
+        <div class="row mt-3">
+          <div class="col-6">
+            <select class="form-select" formControlName="breed">
+              <option value="" disabled selected>Select Breed</option>
+              <option value="Indigenous_cow">Indigenous Cow</option>
+              <option value="Rajasthani_cow">Rajasthani Cow</option>
+              <option value="Gir">Gir</option>
+              <option value="Bikaneri_camel">Bikaneri camel</option>
+              <option value="Malwi_camel">Malwi camel</option>
+              <option value="Alpine_goat">Alpine Goat</option>
+              <option value="Angora_goat">Angora Goat</option>
+              <option value="Murrah_buffalo">Murrah Buffalo</option>
+            </select>
+            <small *ngIf="regForm.get('breed')?.touched && regForm.get('breed')?.invalid" class="text-danger">
+              Please select a breed.
+            </small>
+          </div>
+  
+          <div class="col-6">
+            <select class="form-select" formControlName="milk">
+              <option value="" disabled selected>Milk (in Litre)</option>
+              <option *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]">{{ i }}</option>
+            </select>
+            <small *ngIf="regForm.get('milk')?.touched && regForm.get('milk')?.invalid" class="text-danger">
+              Please select the milk quantity.
+            </small>
+          </div>
+        </div>
+  
+        <div class="row mt-3">
+          <div class="col-6">
+            <label for="child">Total Child</label>
+            <input type="number" id="child" class="form-control" formControlName="child" />
+            <small *ngIf="regForm.get('child')?.touched && regForm.get('child')?.invalid" class="text-danger">
+              Please enter the number of children.
+            </small>
+          </div>
+          <div class="col-6">
+            <label for="age">Animal Age</label>
+            <input type="number" id="age" class="form-control" formControlName="age" />
+            <small *ngIf="regForm.get('age')?.touched && regForm.get('age')?.invalid" class="text-danger">
+              Please enter the age of the animal.
+            </small>
+          </div>
+        </div>
+  
+        <div class="row mt-3">
+          <div class="col-6">
+            <label for="price">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price" />
+            <small *ngIf="regForm.get('price')?.touched && regForm.get('price')?.invalid" class="text-danger">
+              Please enter a valid price.
+            </small>
+          </div>
+        </div>
+  
+        <div class="mt-3">
+          <label for="description">Description</label>
+          <input type="text" id="description" class="form-control" formControlName="description" />
+          <small *ngIf="regForm.get('description')?.touched && regForm.get('description')?.invalid" class="text-danger">
+            Tell us something about the animal
+          </small>
+        </div>
+  
+        <div class="mt-3">                                
+          <label for="image">Upload Image</label>
+          <input type="file" id="image" class="form-control" (change)="onFileSelect($event)" accept="image/*" />
+          <small *ngIf="!selectedFile" class="text-danger">
+            Please upload an image.
+          </small>
+        </div>
+  
+        
+        <div class="mt-4">
+          <button type="submit" class="btn btn-light px-5 py-2 rounded-pill" style="background-color: #FF9933;">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
